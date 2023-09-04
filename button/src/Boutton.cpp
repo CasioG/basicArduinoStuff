@@ -9,19 +9,20 @@ void Boutton::tick()
 {
     int bouttonState = digitalRead(m_pinBoutton);
     long currentDate = millis();
+
     if (bouttonState != m_lastBouttonState)
     {
+        m_lastChangedDate = currentDate;
         m_lastBouttonState = bouttonState;
     }
-
-    if (m_nextChangeDate < currentDate)
+    
+    if (currentDate - m_lastChangedDate > m_minTimeForBouttonPressed)
     {
-        if (m_lastBouttonState == LOW && bouttonState == HIGH)
+        if (m_lastStableButtonState == LOW && bouttonState == HIGH)
         {
             Serial.println("action bouton");
             m_action->execute();
         }
-        m_lastBouttonState = bouttonState;
-        m_nextChangeDate = currentDate + m_minTimeForBouttonPressed;
+        m_lastStableButtonState = bouttonState;
     }
 }

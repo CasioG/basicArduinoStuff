@@ -7,7 +7,7 @@ class Boutton
 private:
     const int m_pinBoutton;
     Action *m_action;
-    long m_nextChangeDate = 0;
+    long m_lastChangedDate = 0;
     int m_lastBouttonState = HIGH;
     int m_lastStableButtonState = HIGH;
     const int m_minTimeForBouttonPressed = 25;

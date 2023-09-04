@@ -10,10 +10,12 @@ Led::Led(const int &p_pinLed) : m_pinLed(p_pinLed)
 void Led::turnOn()
 {
     digitalWrite(this->m_pinLed, HIGH);
+    Serial.println("Led is on");
 }
 void Led::turnOff()
 {
     digitalWrite(this->m_pinLed, LOW);
+    Serial.println("Led is off");
 }
 void Led::toogle()
 {
