@@ -2,17 +2,17 @@
 #include "Action.hpp"
 #include <Arduino.h>
 
-class Boutton
+class Button
 {
 private:
-    const int m_pinBoutton;
+    const int m_pinButton;
     Action *m_action;
     long m_lastChangedDate = 0;
-    int m_lastBouttonState = HIGH;
+    int m_lastButtonState = HIGH;
     int m_lastStableButtonState = HIGH;
-    const int m_minTimeForBouttonPressed = 25;
+    const int m_minTimeForButtonPressed = 25;
 
 public:
-    Boutton(const int p_pinBouton, Action *p__action);
+    Button(const int p_pinBouton, Action *p__action);
     void tick();
 };
